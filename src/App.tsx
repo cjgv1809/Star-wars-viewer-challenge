@@ -5,6 +5,7 @@ import HeroList from "./components/HeroList";
 import Pagination from "./components/Pagination";
 import SearchBar from "./components/SearchBar";
 import Loading from "./components/Loading";
+import Footer from "./components/Footer";
 import Logo from "./components/Logo";
 import type { Character } from "./types";
 
@@ -61,6 +62,7 @@ const App: React.FC = () => {
       {isLoading && <Loading />}
       <HeroList characters={filteredCharacters} />
       <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+      <Footer />
     </main>
   );
 };

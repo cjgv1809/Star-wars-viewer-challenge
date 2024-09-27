@@ -265,3 +265,27 @@ body {
   background-color: #cccccc;
   cursor: not-allowed;
 }
+
+.footer__container > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.625rem;
+  margin: 2rem 0 0;
+  padding: 1.25rem 0 0;
+  border-top: 0.5px solid var(--accent-color);
+  font-size: 1.25rem;
+}
+
+.footer__link {
+  color: var(--accent-color);
+  text-decoration: none;
+}
+
+.footer__link:hover {
+  text-decoration: underline;
+}
+
+.footer__container > p {
+  text-align: center;
+}
