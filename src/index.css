@@ -100,7 +100,7 @@ body {
 .app__logo-container {
   display: flex;
   justify-content: center;
-  margin-bottom: 2rem;
+  margin: 2rem 0 0;
 }
 
 .app__logo {
@@ -111,7 +111,7 @@ body {
 .search__container {
   display: flex;
   justify-content: center;
-  margin: 2rem auto 3rem;
+  margin: 0 auto 3rem;
   max-width: 50%;
   position: sticky;
   top: 20px;

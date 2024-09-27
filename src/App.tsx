@@ -56,14 +56,20 @@ const App: React.FC = () => {
   }
 
   return (
-    <main className="app__container">
+    <>
       <Logo />
-      <SearchBar />
-      {isLoading && <Loading />}
-      <HeroList characters={filteredCharacters} />
-      <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+      <main className="app__container">
+        <SearchBar />
+        {isLoading && <Loading />}
+        <HeroList characters={filteredCharacters} />
+        <Pagination
+          page={page}
+          totalPages={totalPages}
+          onPageChange={setPage}
+        />
+      </main>
       <Footer />
-    </main>
+    </>
   );
 };
 
