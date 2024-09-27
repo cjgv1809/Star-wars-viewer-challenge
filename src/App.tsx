@@ -1,35 +1,68 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import React, { useState, useEffect } from "react";
+import { useSearch } from "./hooks/useSearch";
+import { fetchCharacters } from "./services/fetchCharacters";
+import HeroList from "./components/HeroList";
+import Pagination from "./components/Pagination";
+import SearchBar from "./components/SearchBar";
+import Loading from "./components/Loading";
+import Logo from "./components/Logo";
+import type { Character } from "./types";
 
-function App() {
-  const [count, setCount] = useState(0)
+const App: React.FC = () => {
+  const [characters, setCharacters] = useState<Character[]>([]);
+  const [filteredCharacters, setFilteredCharacters] = useState<Character[]>([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(1);
+  const [isLoading, setIsLoading] = useState(false);
+  const { searchTerm } = useSearch();
+
+  const fetchCharactersData = async (page: number) => {
+    setIsLoading(true);
+    try {
+      const data = await fetchCharacters(page);
+      setCharacters(data.results);
+      setFilteredCharacters(data.results);
+      setTotalPages(Math.ceil(data.count / 10));
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setIsLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchCharactersData(page);
+  }, [page]);
+
+  useEffect(() => {
+    if (!searchTerm) {
+      setFilteredCharacters(characters); // Reset if search term is empty
+    } else {
+      const filtered = characters.filter((character) =>
+        character.name.toLowerCase().includes(searchTerm.toLowerCase())
+      );
+      setFilteredCharacters(filtered);
+    }
+  }, [searchTerm, characters]);
+
+  if (characters?.length === 0 && !isLoading) {
+    return (
+      <div>
+        <h1>Star Wars Heroes</h1>
+        <p>There are no characters to display.</p>
+      </div>
+    );
+  }
 
   return (
-    <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
-}
+    <main className="app__container">
+      <Logo />
+      <SearchBar />
+      {isLoading && <Loading />}
+      <HeroList characters={filteredCharacters} />
+      <Pagination page={page} totalPages={totalPages} onPageChange={setPage} />
+    </main>
+  );
+};
 
-export default App
+export default App;
