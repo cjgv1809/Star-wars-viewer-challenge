@@ -15,7 +15,7 @@ const SearchBar: React.FC = () => {
       <input
         type="search"
         className="search__input"
-        placeholder="Search for a hero"
+        placeholder="Search for a character..."
         value={searchInput}
         onChange={handleSearch}
       />

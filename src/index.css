@@ -73,15 +73,54 @@
 }
 
 :root {
+  --dark-background: #14151d; /* Dark background for scrollbar */
   --bg-color: #323232; /* Dark background */
   --card-bg: #131313; /* Card background */
   --text-color: #f3f3f3; /* Text color */
   --text-light-color: #666666; /* Light text color */
   --accent-color: #f3c623; /* Accent color */
+  --light-accent-color: #ffa500; /* Lighter gold color */
   --button-hover-color: #d3b61a; /* Darker shade on hover */
   --font-family: "Roboto", sans-serif; /* Font family */
   --card-border-radius: 0.625rem; /* Card border radius */
   --transition-duration: 0.2s; /* Transition duration */
+}
+
+/* Custom Scrollbar for WebKit Browsers */
+::-webkit-scrollbar {
+  width: 12px;
+  height: 12px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-background); /* Dark background */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--accent-color); /* Gold color for the thumb */
+  border-radius: 10px;
+  border: 3px solid var(--dark-background); /* Dark border to match the track */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--light-accent-color); /* Lighter gold on hover */
+}
+
+/* Additional Styling for Scrollbar Buttons (Optional) */
+::-webkit-scrollbar-button {
+  background: var(--accent-color); /* Gold color for the buttons */
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-button:hover {
+  background: var(--light-accent-color); /* Lighter gold on hover */
+}
+
+/* Custom Scrollbar for Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--accent-color) var(--dark-background);
 }
 
 body {
@@ -89,9 +128,11 @@ body {
   font-family: var(--font-family);
   background-color: var(--bg-color);
   color: var(--text-color);
+  -ms-overflow-style: -ms-autohiding-scrollbar;
 }
 
 .app__container {
+  min-height: 100vh;
   max-width: 1400px;
   margin: 0 auto;
   padding: 3rem;
@@ -106,6 +147,32 @@ body {
 .app__logo {
   width: 300px;
   object-fit: contain;
+}
+
+.app__no-results {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.app__no-results--img {
+  height: 350px;
+  aspect-ratio: 1;
+  object-fit: cover;
+}
+
+.app__no-results--heading {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 2rem 0;
+  text-wrap: balance;
+}
+
+.app__no-results--text {
+  font-size: 1.5rem;
+  font-weight: 400;
+  margin: 1rem 0;
 }
 
 .search__container {
@@ -143,6 +210,7 @@ body {
   gap: 1.25rem;
   padding: 1.25rem;
   justify-content: center;
+  min-height: 100vh;
 }
 
 .hero__card {
@@ -254,7 +322,7 @@ body {
   padding: 0.75rem;
   margin: 2rem 0;
   cursor: pointer;
-  transition: background-color var(--transition-duration);
+  transition: background-color var(--transition-duration) ease-in-out;
 }
 
 .pagination button:hover {
