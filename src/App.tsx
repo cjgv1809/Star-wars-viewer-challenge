@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useSearch } from "./hooks/useSearch";
+import { shouldShowNoResults } from "./utils";
 import { fetchCharacters } from "./services/fetchCharacters";
 import HeroList from "./components/HeroList";
 import Pagination from "./components/Pagination";
@@ -7,6 +8,7 @@ import SearchBar from "./components/SearchBar";
 import Loading from "./components/Loading";
 import Footer from "./components/Footer";
 import Logo from "./components/Logo";
+import NotFoundCharacter from "./components/NotFoundCharacter";
 import type { Character } from "./types";
 
 const App: React.FC = () => {
@@ -60,6 +62,12 @@ const App: React.FC = () => {
       <Logo />
       <main className="app__container">
         <SearchBar />
+        {shouldShowNoResults(
+          searchTerm,
+          isLoading,
+          characters,
+          filteredCharacters
+        ) && <NotFoundCharacter />}
         {isLoading && <Loading />}
         <HeroList characters={filteredCharacters} />
         <Pagination
