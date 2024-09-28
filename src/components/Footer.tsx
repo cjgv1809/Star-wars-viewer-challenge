@@ -4,13 +4,14 @@ const Footer: React.FC = () => {
   return (
     <footer className="footer__container">
       <div>
+        <span>Designed and developed by</span>
         <a
           href="https://github.com/cjgv1809"
           target="_blank"
           rel="noopener noreferrer"
           className="footer__link"
         >
-          <span>Made by cjgv1809</span>
+          cjgv1809
         </a>
         <svg
           xmlns="http://www.w3.org/2000/svg"
