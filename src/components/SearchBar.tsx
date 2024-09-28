@@ -1,13 +1,22 @@
-import React, { useEffect, useState } from "react";
+import React, { useCallback, useEffect, useState } from "react";
 import { useSearch } from "@/hooks/useSearch";
+import { debounce } from "@/utils";
 
 const SearchBar: React.FC = () => {
   const [searchInput, setSearchInput] = useState("");
   const { setSearchTerm } = useSearch();
 
+  // Create a debounced version of setSearchTerm
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const debouncedSetSearchTerm = useCallback(
+    debounce((value: string) => setSearchTerm(value), 300),
+    [setSearchTerm]
+  );
+
   const handleSearch = (e: React.ChangeEvent<HTMLInputElement>) => {
-    setSearchInput(e.target.value);
-    setSearchTerm(e.target.value);
+    const value = e.target.value;
+    setSearchInput(value);
+    debouncedSetSearchTerm(value);
   };
 
   useEffect(() => {
