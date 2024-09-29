@@ -50,7 +50,7 @@ const App: React.FC = () => {
 
   if (characters?.length === 0 && !isLoading) {
     return (
-      <div>
+      <div className="app__no-characters-wrapper">
         <h1>Star Wars Heroes</h1>
         <p>There are no characters to display.</p>
       </div>
@@ -70,11 +70,18 @@ const App: React.FC = () => {
         ) && <NotFoundCharacter />}
         {isLoading && <Loading />}
         <HeroList characters={filteredCharacters} />
-        <Pagination
-          page={page}
-          totalPages={totalPages}
-          onPageChange={setPage}
-        />
+        {!shouldShowNoResults(
+          searchTerm,
+          isLoading,
+          characters,
+          filteredCharacters
+        ) && (
+          <Pagination
+            page={page}
+            totalPages={totalPages}
+            onPageChange={setPage}
+          />
+        )}
       </main>
       <Footer />
     </>
