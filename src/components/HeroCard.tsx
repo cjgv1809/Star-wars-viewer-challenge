@@ -31,7 +31,7 @@ const HeroCard: React.FC<HeroCardProps> = ({
       <motion.article
         className="hero__card"
         whileHover={{
-          outline: "5px solid var(--accent-color)",
+          outline: "5px solid var(--color-accent-primary)",
           scale: 1.05,
           transition: { duration: 0.2 },
         }}
