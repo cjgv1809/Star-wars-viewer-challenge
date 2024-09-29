@@ -72,11 +72,11 @@ Para correr el proyecto, siga los siguientes pasos:
 
 ## Capturas de pantalla
 
-<img src="" alt="Desktop view" width="400" />
+<img src="https://github.com/user-attachments/assets/84e2b358-bc5f-4d0b-90fe-a6797ac1ec41" alt="Desktop view" width="400" />
 
-<img src="" alt="Tablet view" width="400" />
+<img src="https://github.com/user-attachments/assets/89f2ebdc-4857-4ddd-a250-7cf934c013a6" alt="Tablet view" width="400" />
 
-<img src="" alt="Mobile view" width="400" />
+<img src="https://github.com/user-attachments/assets/b65170e8-f225-407b-b7cd-9c6be85a33d8" alt="Mobile view" width="400" />
 
 ## Documentación
 
