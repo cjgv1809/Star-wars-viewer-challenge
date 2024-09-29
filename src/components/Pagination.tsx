@@ -16,33 +16,17 @@ const Pagination: React.FC<PaginationProps> = ({
     handleScroll();
   };
 
-  const handleArrowRight = () => {
-    onPageChange(page + 1);
-    handleScroll();
-  };
-
-  const handleArrowLeft = () => {
-    onPageChange(page - 1);
-    handleScroll();
-  };
-
-  const handleOnPageChange = (newPage: number) => {
-    onPageChange(newPage);
-    handleScroll();
-  };
-
   return (
     <nav className="pagination" role="navigation" aria-label="Pagination">
-      {page > 1 && (
-        <button
-          type="button"
-          onClick={() => handleOnPageChange(page - 1)}
-          onKeyDown={handleArrowLeft}
-          aria-label="Previous page"
-        >
-          <ChevronLeft size={24} />
-        </button>
-      )}
+      <button
+        type="button"
+        onClick={() => handlePageChange(page - 1)}
+        onKeyDown={(e) => e.key === "Enter" && handlePageChange(page - 1)}
+        aria-label="Previous page"
+        disabled={page === 1}
+      >
+        <ChevronLeft size={24} />
+      </button>
       <ul className="pagination__list" role="list">
         {Array.from({ length: totalPages }, (_, index) => (
           <li key={index} className="pagination__item" role="listitem">
@@ -59,16 +43,16 @@ const Pagination: React.FC<PaginationProps> = ({
           </li>
         ))}
       </ul>
-      {page < totalPages && (
-        <button
-          type="button"
-          onClick={() => handleOnPageChange(page + 1)}
-          onKeyDown={handleArrowRight}
-          aria-label="Next page"
-        >
-          <ChevronRight size={24} />
-        </button>
-      )}
+      <span className="pagination__active-page">Page {page}</span>
+      <button
+        type="button"
+        onClick={() => handlePageChange(page + 1)}
+        onKeyDown={(e) => e.key === "Enter" && handlePageChange(page + 1)}
+        aria-label="Next page"
+        disabled={page === totalPages}
+      >
+        <ChevronRight size={24} />
+      </button>
     </nav>
   );
 };
