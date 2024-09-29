@@ -1,5 +1,5 @@
 import { render, screen, fireEvent } from "@testing-library/react";
-import { vi } from "vitest";
+import { vi, Mock } from "vitest";
 import { useSearch } from "@/hooks/useSearch";
 import SearchBar from "@/components/SearchBar";
 
@@ -9,7 +9,7 @@ describe("SearchBar", () => {
   const setSearchTerm = vi.fn();
 
   beforeEach(() => {
-    (useSearch as vi.Mock).mockReturnValue({ setSearchTerm });
+    (useSearch as Mock).mockReturnValue({ setSearchTerm });
   });
 
   it("renders without crashing", () => {

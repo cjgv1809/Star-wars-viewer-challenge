@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { render, screen } from "@testing-library/react";
-import { vi } from "vitest";
+import { vi, Mock } from "vitest";
 import { extractIdFromUrl } from "@/utils";
 import { characters } from "@/constants";
 import HeroList from "@/components/HeroList";
@@ -14,8 +15,8 @@ class IntersectionObserver {
   rootMargin: string = "";
   thresholds: ReadonlyArray<number> = [];
   constructor(
-    callback: IntersectionObserverCallback,
-    options?: IntersectionObserverInit
+    _callback: IntersectionObserverCallback,
+    _options?: IntersectionObserverInit
   ) {}
   observe() {}
   unobserve() {}
@@ -29,7 +30,7 @@ global.IntersectionObserver = IntersectionObserver;
 
 describe("HeroList", () => {
   beforeEach(() => {
-    (extractIdFromUrl as vi.Mock).mockImplementation((url: string) => {
+    (extractIdFromUrl as Mock).mockImplementation((url: string) => {
       const parts = url.split("/");
       return parts[parts.length - 2];
     });
