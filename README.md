@@ -62,9 +62,9 @@ Para correr el proyecto, siga los siguientes pasos:
 
 2. Abrir terminal y correr:
 
-```sh
-pnpm test
-```
+    ```sh
+    pnpm test
+    ```
 
 ## Autor
 
