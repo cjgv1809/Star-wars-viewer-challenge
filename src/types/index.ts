@@ -1,10 +1,13 @@
 export interface Character {
   name: string;
   height: string;
-  birthYear: string;
+  birth_year: string;
   mass: string;
   gender: string;
-  url: string;
+  hair_color: string;
+  skin_color: string;
+  eye_color: string;
+  url?: string | null;
 }
 
 export interface CharacterResponse {
@@ -17,8 +20,24 @@ export interface HeroListProps {
 }
 
 export interface HeroCardProps {
-  hero: Character;
+  character: Character;
   image?: string;
+}
+
+export interface HeroCardDetailsProps {
+  isOpen: boolean;
+  onClose: () => void;
+  character: {
+    name: string;
+    height: string;
+    birth_year: string;
+    gender: string;
+    mass: string;
+    hair_color: string;
+    skin_color: string;
+    eye_color: string;
+  };
+  backgroundImage: string;
 }
 
 export interface PaginationProps {

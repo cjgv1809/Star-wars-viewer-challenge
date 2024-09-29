@@ -23,6 +23,10 @@ export const shouldShowNoResults = (
   );
 };
 
+export const capitalizeWords = (str: string): string => {
+  return str.replace(/\b\w/g, (char) => char.toUpperCase());
+};
+
 export function debounce<T extends (...args: string[]) => void>(
   func: T,
   wait: number
