@@ -2,11 +2,13 @@ import React from "react";
 
 const Loading: React.FC = () => {
   return (
-    <div className="loader__wrapper">
+    <div className="loader__wrapper" role="presentation">
       <svg
         viewBox="-50 -50 700 700"
         className="loader__svg"
         xmlns="http://www.w3.org/2000/svg"
+        role="img"
+        aria-label="Loading"
       >
         <g>
           <title>Layer 1</title>
