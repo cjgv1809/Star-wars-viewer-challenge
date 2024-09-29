@@ -483,6 +483,10 @@ body {
   text-decoration-thickness: 0.75rem;
 }
 
+.pagination__active-page {
+  display: none;
+}
+
 .pagination button {
   display: flex;
   align-items: center;
@@ -502,6 +506,11 @@ body {
 
 .pagination button:hover {
   background-color: var(--color-button-hover);
+}
+
+.pagination button:disabled {
+  background-color: var(--color-text-secondary);
+  cursor: not-allowed;
 }
 
 .footer__container > div {
@@ -532,7 +541,7 @@ body {
   text-align: center;
 }
 
-@media screen and (max-width: var(--breakpoint-mobile)) {
+@media screen and (max-width: 480px) {
   .app__container {
     padding: 1rem;
   }
@@ -547,5 +556,12 @@ body {
 
   .pagination__list {
     display: none;
+  }
+
+  .pagination__active-page {
+    display: block;
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-align: center;
   }
 }
