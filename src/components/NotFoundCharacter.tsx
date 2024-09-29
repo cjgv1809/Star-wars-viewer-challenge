@@ -1,11 +1,14 @@
+import React from "react";
+
 const NotFoundCharacter: React.FC = () => {
   return (
-    <section className="app__no-results">
+    <section className="app__no-results" role="region">
       <div>
         <img
           src="/not-found.gif"
           alt="Not found"
           className="app__no-results--img"
+          role="img"
         />
       </div>
       <h1 className="app__no-results--heading">

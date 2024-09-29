@@ -20,21 +20,9 @@ const fadeInAnimationVariants = {
 
 const HeroList: React.FC<HeroListProps> = ({ characters }) => {
   return (
-    <motion.div
-      className="hero__list"
-      initial="initial"
-      animate="animate"
-      variants={{
-        initial: {},
-        animate: {
-          transition: {
-            staggerChildren: 0.1,
-          },
-        },
-      }}
-    >
+    <div className="hero__list">
       {characters.map((character: Character, index: number) => {
-        const id = extractIdFromUrl(character.url);
+        const id = character.url ? extractIdFromUrl(character.url) : null;
         const image = `https://starwars-visualguide.com/assets/img/characters/${id}.jpg`;
 
         if (!id) return null;
@@ -50,11 +38,11 @@ const HeroList: React.FC<HeroListProps> = ({ characters }) => {
             }}
             custom={index}
           >
-            <HeroCard hero={character} image={image} />
+            <HeroCard character={character} image={image} />
           </motion.div>
         );
       })}
-    </motion.div>
+    </div>
   );
 };
 
