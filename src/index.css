@@ -83,7 +83,6 @@
   --color-button-hover: #d3b61a; /* Button hover color */
   --color-button-clear: #ff0000; /* Clear button color */
   --color-button-clear-hover: #ff3333; /* Clear button hover color */
-  --breakpoint-mobile: 480px; /* Mobile breakpoint */
   --font-family-primary: "Roboto", sans-serif; /* Primary font family */
   --border-radius-card: 0.625rem; /* Card border radius */
   --transition-duration-default: 0.2s; /* Default transition duration */
@@ -539,6 +538,12 @@ body {
 
 .footer__container > p {
   text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+  .search__container {
+    max-width: 80%;
+  }
 }
 
 @media screen and (max-width: 480px) {
