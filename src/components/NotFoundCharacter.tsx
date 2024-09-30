@@ -9,6 +9,7 @@ const NotFoundCharacter: React.FC = () => {
           alt="Not found"
           className="app__no-results--img"
           role="img"
+          loading="lazy"
         />
       </div>
       <h1 className="app__no-results--heading">

@@ -8,6 +8,7 @@ const Logo: React.FC = () => {
         alt="Star Wars Logo"
         className="app__logo"
         role="img"
+        loading="lazy"
       />
     </header>
   );
